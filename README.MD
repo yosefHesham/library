@@ -1,32 +1,17 @@
 
-# REACT-Template
 
-> Starter template with linters and bable setup for react projects
-
-
-# Note:
-this is a usage guide, remove it once you install all requirements
+> Library project built with ruby & applying oop concepts
 
 
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
-- git
-- npm
+- ruby
+- vscode
 
 ### Setup
-- clone this temp with `git clone https://github.com/yosefHesham/react-temp`
-
-### Install
-- run `npm install` to install dev dependencies
-
-### Usage
-- run `npm start` to run server.
-- run `npm run build` to prepare for deployment
-
-
-
+- clone this temp with `git clone https://github.com/yosefHesham/library`
 
 ## Authors
 
