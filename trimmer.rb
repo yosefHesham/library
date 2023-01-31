@@ -1,4 +1,4 @@
-class CapitalizeDecorator < BaseDecorator
+class TrimmerDecorator < BaseDecorator
   def initialize(nameable)
     @nameable = nameable
     super(nameable)
