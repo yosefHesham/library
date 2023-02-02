@@ -1,5 +1,5 @@
 class Book
-  attr :title, :author
+  attr_accessor :title, :author
 
   def initialize(title, author)
     @title = title
@@ -12,7 +12,5 @@ class Book
     @rentals.push(rental)
     ## belongs to
     rental.book = self
-
-    rental.person = self
   end
 end
