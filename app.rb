@@ -87,29 +87,33 @@ class App
     permission
   end
 
+  def create_student(name, age, classroom)
+    print 'Has parent permission? [y/n]:'
+    permission = gets.chomp
+    parent_permission = check_permission(permission)
+    student_classroom = Classroom.new(classroom)
+    student = Student.new(age, name, parent_permission: parent_permission)
+    student.classroom = student_classroom
+    @person.push(student)
+  end
+
+  def create_teacher(name, age)
+    print 'Specialization:'
+    specialty = gets.chomp
+    @person.push(Teacher.new(age, specialty, name: name))
+  end
+
   def create_person
     num = check_options('Do you want to create a student (1) or a teacher (2)? [input the number]: ', [1, 2])
     age = check_number('Age:')
     print 'name:'
     name = gets.chomp
     classroom = check_number('Classroom:')
-
     case num
     when 1
-      print 'Has parent permission? [y/n]:'
-      permission = gets.chomp
-
-      parent_permission = check_permission(permission)
-      student_classroom = Classroom.new(classroom)
-      student = Student.new(age, name, parent_permission: parent_permission)
-      student.classroom = student_classroom
-
-      @person.push(student)
+      create_student(name, age, classroom)
     when 2
-      print 'Specialization:'
-      specialty = gets.chomp
-
-      @person.push(Teacher.new(age, specialty, name: name))
+      create_teacher(name, age)
     else
       puts 'Invalid number, please enter number again!'
     end
