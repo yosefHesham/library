@@ -100,7 +100,7 @@ class App
   def create_teacher(name, age)
     print 'Specialization:'
     specialty = gets.chomp
-    @person.push(Teacher.new(age, specialty, name: name))
+    @person.push(Teacher.new(age, specialty, name))
   end
 
   def create_person
