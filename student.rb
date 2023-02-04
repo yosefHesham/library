@@ -7,8 +7,8 @@ class Student < Person
   end
 
   def classroom=(classroom)
+    classroom.students.push(self) unless classroom.students.include?(self)
     @classroom = classroom
-    classroom.add_student(self)
   end
 
   def play_hooky

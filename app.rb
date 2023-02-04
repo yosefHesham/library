@@ -2,6 +2,7 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
 require_relative 'rental'
+require_relative 'classroom'
 
 class App
   def initialize
@@ -89,7 +90,6 @@ class App
   def create_person
     num = check_options('Do you want to create a student (1) or a teacher (2)? [input the number]: ', [1, 2])
     age = check_number('Age:')
-
     print 'name:'
     name = gets.chomp
     classroom = check_number('Classroom:')
@@ -99,9 +99,12 @@ class App
       print 'Has parent permission? [y/n]:'
       permission = gets.chomp
 
-      permission = check_permission(permission)
+      parent_permission = check_permission(permission)
+      student_classroom = Classroom.new(classroom)
+      student = Student.new(age, name, parent_permission: parent_permission)
+      student.classroom = student_classroom
 
-      @person.push(Student.new(age, name, classroom, parent_permission: permission))
+      @person.push(student)
     when 2
       print 'Specialization:'
       specialty = gets.chomp
@@ -110,7 +113,7 @@ class App
     else
       puts 'Invalid number, please enter number again!'
     end
-    puts 'Person created successfully'
+    puts "Person #{name} created successfully"
   end
 
   def create_rental
